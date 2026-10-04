@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grafos de navegación y NavMesh 2D</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+  <header>
+    <h1>Grafos de navegación y NavMesh 2D</h1>
+    <p>Genera obstáculos al azar, elige cómo discretizar el espacio libre y observa la estructura sobre la que corre A*.</p>
+  </header>
+  <main>
+    <aside>
+      <button id="generate" class="primary">Generar obstáculos</button>
+
+      <section>
+        <h2>Escenario</h2>
+        <label>Obstáculos <output data-for="count"></output>
+          <input type="range" data-key="count" min="3" max="25" value="10"></label>
+        <label>Tamaño máx. <output data-for="size"></output>
+          <input type="range" data-key="size" min="20" max="70" value="45"></label>
+        <label>Margen del agente <output data-for="margin"></output>
+          <input type="range" data-key="margin" min="0" max="30" value="12"></label>
+        <label>Celda de la grilla <output data-for="cell"></output>
+          <input type="range" data-key="cell" min="16" max="60" value="30"></label>
+      </section>
+
+      <section>
+        <h2>Métodos</h2>
+        <div id="methods"></div>
+      </section>
+
+      <section>
+        <h2>Capas</h2>
+        <label class="check"><input type="checkbox" data-layer="showMargin" checked> Margen del agente</label>
+        <label class="check"><input type="checkbox" data-layer="showNodes" checked> Nodos</label>
+        <label class="check"><input type="checkbox" data-layer="showPath" checked> Camino A*</label>
+      </section>
+
+      <section>
+        <h2>Resultados</h2>
+        <ul id="stats"></ul>
+      </section>
+
+      <p class="hint">Arrastra los obstáculos, el punto <b class="a">A</b> (inicio) y el punto <b class="b">B</b> (fin).</p>
+    </aside>
+
+    <div id="stage">
+      <svg id="scene" viewBox="0 0 900 600"></svg>
+    </div>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
